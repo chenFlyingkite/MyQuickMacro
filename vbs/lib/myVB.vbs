@@ -1,8 +1,22 @@
 'Namespace myvb
-Option Explicit
 
-    Const ln = vbCrLf '´«¦æ
+'Fail
+'Dim nb
+'nb = PlugIn.File.IsFileExit("D:/vbs/nb")
+
+'If nb Then
+'    Import "D:\vbs\lib\nbPos.vbs"
+'Else
+'    Import "D:\vbs\lib\pcPos.vbs"
+'End If
+'MsgBox "nb = " & nb
+
+'Option Explicit
+
+    'Const ln = vbCr '´«¦æ
     'Const ln = vbCrLf '´«¦æ, vbCr, vbLf, vbNewLine
+    Dim ln
+    ln = vbCr
 
     Function ox(b)
         If b Then 

@@ -1,4 +1,4 @@
-Import "D:\vbs\lib\myVB.vbs"
+'Import "D:\vbs\lib\myVB.vbs"
 'Import "D:\vbs\lib\Rect.vbs"
 
     'Rects
@@ -9,6 +9,14 @@ Import "D:\vbs\lib\myVB.vbs"
         isInRect = inX And inY
     End Function
     
+    Function ox2(b)
+        If b Then 
+            ox = "o"
+        Else 
+            ox = "x"
+        End If
+    End Function
+    
 
 'Namespace myvb
     'Namespace dish
@@ -16,23 +24,23 @@ Import "D:\vbs\lib\myVB.vbs"
     'Option Explicit
 
         'Const sample = "D:/vbs/petriDish/" '"樣本圖"
-        Const sample = "D:/vbs/bmp/" '"樣本圖"
-        Const food_x = 360  '"食物x"
-        Const food_y = 560  '"食物y"
-        
-        Const dish0_x  = 1210 '"皿左.上x"
-        Const dish0_y  =  530 '"皿左.上y"
-        Const dish_w   =  130 '"皿寬"
-        Const dish_h   =  170 '"皿高"
-        Const dish0_cx = 1270 '"皿左.心x"
-        Const dish0_cy =  620 '"皿左.心y"
-        Const dish2_rx = 1600 '"皿右.下x"
-        Const dish2_ry =  710 '"皿右.下y"
-        
-        Const dish0_sx  = 1260 '"皿狀態左上x"
-        Const dish0_sy  =  550 '"皿狀態左上y"
-        Const dish0_srx = 1310 '"皿狀態右下x"
-        Const dish0_sry =  610 '"皿狀態右下y"
+'        Const sample = "D:/vbs/bmp/" '"樣本圖"
+'        Const food_x = 360  '"食物x"
+'        Const food_y = 560  '"食物y"
+'        
+'        Const dish0_x  = 1210 '"皿左.上x"
+'        Const dish0_y  =  530 '"皿左.上y"
+'        Const dish_w   =  130 '"皿寬"
+'        Const dish_h   =  170 '"皿高"
+'        Const dish0_cx = 1270 '"皿左.心x"
+'        Const dish0_cy =  620 '"皿左.心y"
+'        Const dish2_rx = 1600 '"皿右.下x"
+'        Const dish2_ry =  710 '"皿右.下y"
+'        
+'        Const dish0_sx  = 1260 '"皿狀態左上x"
+'        Const dish0_sy  =  550 '"皿狀態左上y"
+'        Const dish0_srx = 1310 '"皿狀態右下x"
+'        Const dish0_sry =  610 '"皿狀態右下y"
         
         '餵食指定培養皿連續數次
         Sub feedMore(plantAt, times)
@@ -75,11 +83,16 @@ Import "D:\vbs\lib\myVB.vbs"
             Dim ans
             Dim fx, fy, gx, gy
             ', hx, hy 'as double
-            'Dim image, sim, exist
-            fx = 760
-            fy = 320
-            gx = 1050
-            gy = 480
+            ' w = 40% ~ 60%
+            ' h = 35% ~ 60%
+            fx = window_l + window_w * 0.4
+            gx = window_l + window_w * 0.6
+            fy = window_t + window_h * 0.35
+            gy = window_t + window_h * 0.6
+            'fx = 760
+            'fy = 320
+            'gx = 1050
+            'gy = 480
             clickImageOK fx, fy, gx, gy
             'ans = isImageOK(fx, fy, gx, gy)
             'SayString "exist = " & ans
