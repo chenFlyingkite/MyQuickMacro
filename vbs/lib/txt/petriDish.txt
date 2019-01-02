@@ -1,0 +1,116 @@
+Import "D:\vbs\lib\myVB.vbs"
+'Import "D:\vbs\lib\Rect.vbs"
+
+    'Rects
+    Function isInRect(x, y, L, T, R, B)
+        Dim inX, inY 'as Boolean
+        'Dim inX = False
+        'Dim inY = False
+        inX = L <= x And x <= R
+        inY = T <= y And y <= B
+        isInRect = inX And inY
+    End Function
+
+'Namespace myvb
+    'Namespace dish
+    
+    'Option Explicit
+
+        'Const sample = "D:/vbs/petriDish/" '"樣本圖"
+        Const sample = "D:/vbs/bmp/" '"樣本圖"
+        Const food_x = 360  '"食物x"
+        Const food_y = 560  '"食物y"
+        
+        Const dish0_x  = 1210 '"皿左.上x"
+        Const dish0_y  =  530 '"皿左.上y"
+        Const dish_w   =  130 '"皿寬"
+        Const dish_h   =  170 '"皿高"
+        Const dish0_cx = 1270 '"皿左.心x"
+        Const dish0_cy =  620 '"皿左.心y"
+        Const dish2_rx = 1600 '"皿右.下x"
+        Const dish2_ry =  710 '"皿右.下y"
+        
+        Const dish0_sx  = 1260 '"皿狀態左上x"
+        Const dish0_sy  =  550 '"皿狀態左上y"
+        Const dish0_srx = 1310 '"皿狀態右下x"
+        Const dish0_sry =  610 '"皿狀態右下y"
+        
+        '餵食指定培養皿連續數次
+        Sub feedMore(plantAt, times)
+            Dim i
+            For i = 0 to times
+                Call clickOKIfExist()
+                feedAt(plantAt)
+                Delay 500
+            Next
+        End Sub
+        
+        ' x = 0, 1, 2
+        ' sim = image similarity, .1 ~ 0.99
+        ' images = paths array
+        Function hasImages(x, sim, images) 'as Boolean
+            Dim w, fx, fy, gx, gy, hx, hy 'as double
+            Dim ans, image 'as Boolean
+            w = dish_w
+            fx = dish0_sx + x * w
+            fy = dish0_sy
+            gx = fx + w
+            gy = dish0_sry
+            SayString "Find (" & fx & ", " & fy & ") ~ (" _
+                    & gx & ", " & gy & ")" & ln
+            'SayString "fx = " & fx & ", fy = " & fy & ln
+            'SayString "gx = " & gx & ", gy = " & gy & ln & ln
+            ans = false
+            For Each image In images
+                FindPic fx, fy, gx, gy, image, sim, hx, hy
+                SayString "L : hx = " & hx & ", hy = " & hy _
+                        & ", in " & image & ln
+                ans = ans or isInRect(hx, hy, fx, fy, gx, gy)
+            Next	
+            
+            hasImages = ans
+        End Function
+        
+        Sub clickOKIfExist()
+            Dim fx, fy, gx, gy, hx, hy 'as double
+            Dim image, sim, exist
+            fx = 770
+            fy = 350
+            gx = 1050
+            gy = 480
+            image = sample & "much.bmp"
+            sim = 0.7
+            FindPic fx, fy, gx, gy, image, sim, hx, hy
+            SayString "L : hx = " & hx & ", hy = " & hy & ", in " & image & ln
+            exist = isInRect(hx, hy, fx, fy, gx, gy)
+            if exist Then
+                'click OK
+                Call clickAt(hx + 25, hy + 15)
+            Else
+                'MoveTo 1000, 900
+            End If
+            SayString "exist = " & exist
+        End Sub
+
+        'Feed the petri dish of x, where x : L=0, M=1, R=2 
+        Sub feedAt(x)
+            Dim tx 'as double
+            'tx = target's x position
+            tx = dish0_cx + dish_w * x
+            Call feed(food_x, food_y, tx, dish0_cy)
+        End Sub
+
+        'Mouse click at (sx, sy) and click at (tx, ty)
+        Sub feed(sx, sy, tx, ty)
+            Call clickAt(sx, sy)
+            Call clickAt(tx, ty)
+        End Sub
+        
+        ' Move to (x, y), click and delay
+        Sub clickAt(x, y)
+            MoveTo x, y
+            'LeftClick 1
+            Delay 50
+        End Sub
+    'End Namespace
+'End Namespace
