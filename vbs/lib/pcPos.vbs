@@ -2,12 +2,12 @@ Const sample = "D:/vbs/bmp/" '"樣本圖"
 
 '-----------------------
 Const food_x = 360  '"食物中央x"
-Const food_y = 560  '"食物中央y"
+Const food_y = 570  '"食物中央y"
 
 Const dish0_x  = 1210 '"皿左.上x"
 Const dish0_y  =  530 '"皿左.上y"
 Const dish_w   =  130 '"皿寬"
-Const dish_h   =  170 '"皿高"
+Const dish_h   =  180 '"皿高"
 Const dish0_cx = 1270 '"皿左.心x"
 Const dish0_cy =  620 '"皿左.心y"
 Const dish2_rx = 1600 '"皿右.下x"

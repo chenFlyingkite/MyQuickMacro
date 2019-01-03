@@ -22,34 +22,16 @@
     'Namespace dish
     
     'Option Explicit
-
-        'Const sample = "D:/vbs/petriDish/" '"樣本圖"
-'        Const sample = "D:/vbs/bmp/" '"樣本圖"
-'        Const food_x = 360  '"食物x"
-'        Const food_y = 560  '"食物y"
-'        
-'        Const dish0_x  = 1210 '"皿左.上x"
-'        Const dish0_y  =  530 '"皿左.上y"
-'        Const dish_w   =  130 '"皿寬"
-'        Const dish_h   =  170 '"皿高"
-'        Const dish0_cx = 1270 '"皿左.心x"
-'        Const dish0_cy =  620 '"皿左.心y"
-'        Const dish2_rx = 1600 '"皿右.下x"
-'        Const dish2_ry =  710 '"皿右.下y"
-'        
-'        Const dish0_sx  = 1260 '"皿狀態左上x"
-'        Const dish0_sy  =  550 '"皿狀態左上y"
-'        Const dish0_srx = 1310 '"皿狀態右下x"
-'        Const dish0_sry =  610 '"皿狀態右下y"
         
-        '餵食指定培養皿連續數次
+        'Feed petri dish of $plantAt repeatly for $times times
         Sub feedMore(plantAt, times)
             Dim i
             For i = 1 to times
                 'MoveTo 1300, 100
                 feedAt(plantAt)
-                Delay 400
+                Delay 300
                 Call clickOKIfExist()
+                Delay 200
             Next
         End Sub
         
@@ -64,17 +46,13 @@
             fy = dish0_sy
             gx = fx + w
             gy = dish0_sry
-            SayString "Find (" & fx & ", " & fy & ") ~ (" _
-                    & gx & ", " & gy & ")" & ln
-            'SayString "fx = " & fx & ", fy = " & fy & ln
-            'SayString "gx = " & gx & ", gy = " & gy & ln & ln
+            lg "Find images in " & ltrb(fx, fy, gx, gy) & ln
             ans = false
             For Each image In images
                 FindPic fx, fy, gx, gy, image, sim, hx, hy
-                SayString "L : hx = " & hx & ", hy = " & hy _
-                        & ", in " & image & ln
+                lg "At " & xy(hx, hy) & " is image " & image & ln
                 ans = ans or isInRect(hx, hy, fx, fy, gx, gy)
-            Next	
+            Next
             
             hasImages = ans
         End Function
@@ -89,22 +67,8 @@
             gx = window_l + window_w * 0.6
             fy = window_t + window_h * 0.35
             gy = window_t + window_h * 0.6
-            'fx = 760
-            'fy = 320
-            'gx = 1050
-            'gy = 480
+            lg "Click OK if exist in " & ltrb(fx, fy, gx, gy) & ln
             clickImageOK fx, fy, gx, gy
-            'ans = isImageOK(fx, fy, gx, gy)
-            'SayString "exist = " & ans
-            'if ans(0) Then
-                'click on center of image
-            '    Dim hx, hy
-            '    hx = ans(1)
-            '    hy = ans(2)
-            '    Call clickAt(hx + 20, hy + 8)
-            'Else
-                'MoveTo 1000, 900
-            'End If
         End Sub
         
         Function isImageOK(x0, y0, x1, y1)
@@ -113,7 +77,7 @@
             sim = 0.8
             image = sample & "ok.bmp"
             FindPic x0, y0, x1, y1, image, sim, hx, hy
-            SayString "OK : hx = " & hx & ", hy = " & hy & ", in " & image & ln
+            lg "isOK @ " & xy(hx, hy) & " of " & image & ln
             ans(0) = isInRect(hx, hy, x0, y0, x1, y1)
             'ans(1) = hx
             'ans(2) = hy
@@ -125,7 +89,7 @@
             sim = 0.8
             image = sample & "ok.bmp"
             FindPic x0, y0, x1, y1, image, sim, hx, hy
-            SayString "COK : hx = " & hx & ", hy = " & hy & ", in " & image & ln
+            lg "Found OK at " & xy(hx, hy) & " of " & image & ln
             If isInRect(hx, hy, x0, y0, x1, y1) Then
                 Call clickAt(hx + 20, hy + 8)
             Else
@@ -152,6 +116,19 @@
             MoveTo x, y
             LeftClick 1
             Delay 50
+        End Sub
+        
+        Function ltrb(l, t, r, b)
+            ltrb = xy(l, t) & " ~ " & xy(r, b)
+        End Function
+        
+        Function xy(x, y)
+            xy = "(" & x & ", " & y & ")"
+        End Function
+        
+        Sub lg(s)
+            'MsgBox s
+            'SayString s
         End Sub
     'End Namespace
 'End Namespace
