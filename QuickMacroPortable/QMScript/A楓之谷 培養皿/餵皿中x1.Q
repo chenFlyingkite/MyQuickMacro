@@ -30,8 +30,25 @@ SetupOCXFile=
 舉例：按熱鍵一下，即可模擬點擊滑鼠左鍵一次。
 
 [Script]
+Option Explicit
+Dim nb
+nb = PlugIn.File.IsFileExit("D:/vbs/nb")
+If nb Then
+    Import "D:\vbs\lib\nbPos.vbs"
+Else
+    Import "D:\vbs\lib\pcPos.vbs"
+End If
+Import "D:\vbs\lib\myVB.vbs"
+Import "D:\vbs\lib\petriDish.vbs"
+Import "D:\vbs\lib\Rect.vbs"
+
+' Main ------
+feedMore 1, 1
+/*
 MoveTo 360, 560
 LeftClick 1
 Delay 200
 MoveTo 1400, 620
 LeftClick 1
+*/
+' End Main --------

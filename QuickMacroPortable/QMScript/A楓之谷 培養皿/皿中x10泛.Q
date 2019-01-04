@@ -27,7 +27,7 @@ UEsDBBQAAgAIAC5Rnk1jhHygyAEAALYHAAAGABEAb2suYm1wVVQNAAdjmShcBnkoXAR5KFy9lbuR3DAQ
 
 
 [UIPackage]
-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
+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
 
 
 [Script]
@@ -41,25 +41,38 @@ Else
 End If
 Import "D:\vbs\lib\myVB.vbs"
 Import "D:\vbs\lib\petriDish.vbs"
+Import "D:\vbs\lib\Rect.vbs"
 
-'Call clickAt(food_x, food_y)
 feedMore 1, 10
-'clickOKIfExist
-
 
 'Test
 /*
-
-
-Dim s, d, f
+Dim s, d, f, g
 d = ox(2 > 1)
-f = ox2(2 > 1)
+f = isImageOKx(window_l, window_t, window_r, window_b)
+g = isInRect(2, 3, 0, 1, 3, 4)
 s = "nb = " & nb & ln & _
     ", d = " & d & _
-    ", f = " & f & _
+    ", f = " & f(0) & ", f = " & f(1) & ", f = " & f(2) & _
+    ", g = " & g & _
     ", w = " & window_w & ", h = " & window_h & ln & ln & _
     ", fx = " & food_x & ", fy = " & food_y & ln & ln
-'MsgBox s
+MsgBox s
+
+
+'-----------------
+Function isImageOKx(x0, y0, x1, y1)
+    Dim image, hx, hy, sim
+    Dim ans(3)
+    sim = 0.8
+    image = sample & "ok.bmp"
+    FindPic x0, y0, x1, y1, image, sim, hx, hy
+    lg "isOK @ " & xy(hx, hy) & " of " & image & ln
+    ans(0) = isInRect(hx, hy, x0, y0, x1, y1)
+    ans(1) = hx
+    ans(2) = hy
+    isImageOKx = ans'isInRect(hx, hy, x0, y0, x1, y1)
+End Function
 
 Event Form1.Button1.Click
     Dim s, v
@@ -73,7 +86,7 @@ Event Form1.Button1.Click
     
     Dim hx, hy
     'Form1.Button2.Visible = Not Form1.Button2.Visible 
-    FindPic 0, 0, 1600, 900, "ok.bmp", 0.9, hx, hy
+    FindPic 0, 0, 1600, 900, sample & "ok.bmp", 0.9, hx, hy
     
     s = s & ", hx = " & hx & ", hy = " & hy & ln '& ox(true)
     's = s & ", Vis = " & ox(Form1.Button2.Visible)
