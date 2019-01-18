@@ -24,6 +24,7 @@ SetupOCXFile=
 
 [Script]
 KeyPress "Space", 1
+KeyPress "Down", 1
 KeyPress "Enter", 1
 Delay 200
 KeyPress "Right", 1
