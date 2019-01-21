@@ -28,5 +28,5 @@ LeftClick 1
 Delay 200
 For 3
 KeyPress "Enter", 1
-    Delay 150
+    Delay 250
 Next
