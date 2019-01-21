@@ -42,8 +42,14 @@ Dim sim, hx, hy, image
 image = sample & "MapleStory.bmp"
 sim = 0.9
 FindPic 0, 0, 1600, 900, image, sim, hx, hy
-'Msgbox "MapleStory @ " & xy(hx, hy) & " in " & image & ln
+'Find unfocused image 
+If hx <= 0 Or hy <= 0 Then 
+	image = sample & "MapleStory2.bmp"
+    FindPic 0, 0, 1600, 900, image, sim, hx, hy
+End If
 'Move window to good place
+
+'Msgbox "MapleStory @ " & xy(hx, hy) & " in " & image & ln
 If hx >= 0 And hy >= 0 Then 
     mouseDrag hx, hy, 230, 2
 End If

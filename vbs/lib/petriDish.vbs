@@ -3,7 +3,6 @@
     
     Option Explicit
         
-        '-----------------
         'Feed petri dish of $plantAt repeatly for $times times
         Sub feedMore(plantAt, times)
             Dim i
@@ -16,7 +15,6 @@
             Next
         End Sub
         
-        '-----------------
         ' x = 0, 1, 2
         ' sim = image similarity, .1 ~ 0.99
         ' images = paths array
@@ -39,7 +37,6 @@
             hasImages = ans
         End Function
         
-        '-----------------
         Sub clickOKIfExist()
             Dim fx, fy, gx, gy
             ' w = 40% ~ 60%
@@ -52,33 +49,31 @@
             clickImageOK fx, fy, gx, gy
         End Sub
         
-        '-----------------
-        Function clickImageOK(x0, y0, x1, y1)
-            Dim ans, hx, hy
-            ans = isImageOK(x0, y0, x1, y1)
-            If ans(0) Then
-                hx = ans(1)
-                hy = ans(2)
-                Call clickAt(hx + 20, hy + 8)
-            Else
-                'MoveTo 1000, 900
-            End If
-        End Function
-
-        '-----------------
         Function isImageOK(x0, y0, x1, y1)
             Dim image, hx, hy, sim
             Dim ans(3)
             sim = 0.8
             image = sample & "ok.bmp"
             FindPic x0, y0, x1, y1, image, sim, hx, hy
-            lg "OK @ " & xy(hx, hy) & " in " & image & ln
+            lg "isOK @ " & xy(hx, hy) & " of " & image & ln
             ans(0) = isInRect(hx, hy, x0, y0, x1, y1)
-            ans(1) = hx
-            ans(2) = hy
-            isImageOK = ans
+            'ans(1) = hx
+            'ans(2) = hy
+            isImageOK = ans'isInRect(hx, hy, x0, y0, x1, y1)
         End Function
 
+        Function clickImageOK(x0, y0, x1, y1)
+            Dim image, hx, hy, sim
+            sim = 0.8
+            image = sample & "ok.bmp"
+            FindPic x0, y0, x1, y1, image, sim, hx, hy
+            lg "Found OK at " & xy(hx, hy) & " of " & image & ln
+            If isInRect(hx, hy, x0, y0, x1, y1) Then
+                Call clickAt(hx + 20, hy + 8)
+            Else
+                'MoveTo 1000, 900
+            End If
+        End Function
 
         'Feed the petri dish of x, where x : L=0, M=1, R=2 
         Sub feedAt(x)
