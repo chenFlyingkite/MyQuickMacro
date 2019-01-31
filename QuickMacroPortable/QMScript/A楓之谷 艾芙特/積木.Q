@@ -1,7 +1,7 @@
 [General]
 SyntaxVersion=2
-BeginHotkey=116
-BeginHotkeyMod=0
+BeginHotkey=81
+BeginHotkeyMod=2
 PauseHotkey=0
 PauseHotkeyMod=0
 StopHotkey=123
@@ -37,6 +37,7 @@ Import "D:\vbs\lib\Rect.vbs"
 'Import "D:\vbs\lib\mouse.vbs"
 
 pokeLego 
+Delay 1000
 takePaiyi
 
 '------------------------------
@@ -76,8 +77,9 @@ Function takePaiyi()
 	    KeyPress "Right", 1
 	    Delay 200
 	    enterDelay 2, 250
-	    Delay 1500
+	    Delay 1200
 	    clickAt px, py
+	    Delay 100
 	    enterDelay 5, 250
 	End If
 End Function
