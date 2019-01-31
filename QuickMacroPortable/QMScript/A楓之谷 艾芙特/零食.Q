@@ -74,6 +74,7 @@ Function takePaiyi()
 	    px = hx + 50
 	    py = hy + 40
 	    clickAt px, py
+	    Delay 250
 	    enterDelay 3, 250
 	    KeyPress "Right", 1
 	    Delay 250

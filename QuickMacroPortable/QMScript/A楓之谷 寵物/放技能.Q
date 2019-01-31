@@ -24,4 +24,4 @@ SetupOCXFile=
 
 [Script]
 KeyPress "Shift", 1
-Delay 2000
+Delay 100

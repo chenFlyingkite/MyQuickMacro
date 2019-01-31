@@ -1,7 +1,7 @@
 [General]
 SyntaxVersion=2
-BeginHotkey=116
-BeginHotkeyMod=0
+BeginHotkey=81
+BeginHotkeyMod=2
 PauseHotkey=0
 PauseHotkeyMod=0
 StopHotkey=123

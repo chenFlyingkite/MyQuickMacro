@@ -1,7 +1,7 @@
 [General]
 SyntaxVersion=2
-BeginHotkey=121
-BeginHotkeyMod=0
+BeginHotkey=97
+BeginHotkeyMod=2
 PauseHotkey=0
 PauseHotkeyMod=0
 StopHotkey=123
@@ -37,8 +37,13 @@ Import "D:\vbs\lib\Rect.vbs"
 
 ' Web
 ' http://www.tosgame.com/campaign/53
+Dim x0, y0, x1
+' 1st at (sx, sy)
+x0 = 170
+y0 = 15
+x1 = 290
 // ID1, tab, login, accept, return
-clickAt 315, 17
+clickAt x0, y0
 clickAt 790, 475
 Delay 3000
 clickAt 780, 780 ' Prize
@@ -47,7 +52,7 @@ clickAt 680, 690 'OK
 clickAt 22, 50
 
 // ID1, tab, login, accept, return
-clickAt 400, 16
+clickAt x1, y0
 clickAt 790, 475
 Delay 3000
 clickAt 780, 780 ' Prize
