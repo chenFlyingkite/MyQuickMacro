@@ -1,7 +1,7 @@
 [General]
 SyntaxVersion=2
-BeginHotkey=115
-BeginHotkeyMod=0
+BeginHotkey=87
+BeginHotkeyMod=2
 PauseHotkey=0
 PauseHotkeyMod=0
 StopHotkey=123
@@ -37,6 +37,7 @@ Import "D:\vbs\lib\Rect.vbs"
 'Import "D:\vbs\lib\mouse.vbs"
 
 eatSnack 
+Delay 1000
 takePaiyi
 
 '------------------------------
@@ -52,6 +53,7 @@ Function eatSnack()
 	'Eat snack if exist
 	If hx >= 0 And hy >= 0 Then 
 	    clickAt hx + 70, hy + 40
+	    Delay 200
 	    KeyPress "Enter", 1
 	    Delay 100
 	    KeyPress "Enter", 1
@@ -74,12 +76,14 @@ Function takePaiyi()
 	    px = hx + 50
 	    py = hy + 40
 	    clickAt px, py
+	    Delay 200
 	    enterDelay 3, 250
 	    KeyPress "Right", 1
 	    Delay 250
 	    enterDelay 3, 250
-	    Delay 1500
+	    Delay 1200
 	    clickAt px, py
+	    Delay 100
 	    enterDelay 5, 250
 	End If
 End Function
